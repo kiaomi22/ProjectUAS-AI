@@ -65,35 +65,35 @@ class Greetings(KnowledgeEngine):
         yield Fact(action="find_disease")
 
     @Rule(Fact(action='find_disease'), NOT(Fact(benjolan_di_kulit=W())), salience=1)
-    def symptom_1(self):
+    def symptom_0(self):
         self.declare(Fact(benjolan_di_kulit=input("Apakah anda mengalami benjolan di kulit: ")))
 
     @Rule(Fact(action='find_disease'), NOT(Fact(mengeluarkan_nanah=W())), salience=1)
-    def symptom_2(self):
+    def symptom_1(self):
         self.declare(Fact(mengeluarkan_nanah=input("Apakah kulit anda mengeluarkan nanah: ")))
 
     @Rule(Fact(action='find_disease'), NOT(Fact(demam=W())), salience=1)
-    def symptom_3(self):
+    def symptom_2(self):
         self.declare(Fact(demam=input("Apakah anda demam: ")))
 
     @Rule(Fact(action='find_disease'), NOT(Fact(mata_merah=W())), salience=1)
-    def symptom_4(self):
+    def symptom_3(self):
         self.declare(Fact(mata_merah=input("Apakah mata anda merah: ")))
 
     @Rule(Fact(action='find_disease'), NOT(Fact(rasa_gatal=W())), salience=1)
-    def symptom_5(self):
+    def symptom_4(self):
         self.declare(Fact(rasa_gatal=input("Apakah anda merasakan gatal: ")))
 
     @Rule(Fact(action='find_disease'), NOT(Fact(luka_dari_bagian_mulut=W())), salience=1)
-    def symptom_6(self):
+    def symptom_5(self):
         self.declare(Fact(luka_dari_bagian_mulut=input("Apakah ada luka dari bagian mulut: ")))
 
     @Rule(Fact(action='find_disease'), NOT(Fact(rasa_nyeri=W())), salience=1)
-    def symptom_7(self):
+    def symptom_6(self):
         self.declare(Fact(rasa_nyeri=input("Apakah anda merasakan nyeri: ")))
 
     @Rule(Fact(action='find_disease'), NOT(Fact(kulit_melepuh=W())), salience=1)
-    def symptom_8(self):
+    def symptom_7(self):
         self.declare(Fact(kulit_melepuh=input("Apakah kulit anda melepuh: ")))
 
     # Rules
@@ -122,21 +122,21 @@ class Greetings(KnowledgeEngine):
           Fact(benjolan_di_kulit="no"), Fact(mengeluarkan_nanah="no"), Fact(demam="no"),
           Fact(mata_merah="no"), Fact(rasa_gatal="no"), Fact(luka_dari_bagian_mulut="no"),
           Fact(rasa_nyeri="yes"), Fact(kulit_melepuh="no"))
-    def disease_5(self):
+    def disease_3(self):
         self.declare(Fact(disease="Herpes"))
 
     @Rule(Fact(action='find_disease'),
           Fact(benjolan_di_kulit="no"), Fact(mengeluarkan_nanah="no"), Fact(demam="no"),
           Fact(mata_merah="no"), Fact(rasa_gatal="yes"), Fact(luka_dari_bagian_mulut="no"),
           Fact(rasa_nyeri="no"), Fact(kulit_melepuh="yes"))
-    def disease_6(self):
+    def disease_4(self):
         self.declare(Fact(disease="Kudis"))
 
     @Rule(Fact(action='find_disease'),
           Fact(benjolan_di_kulit="yes"), Fact(mengeluarkan_nanah="no"), Fact(demam="no"),
           Fact(mata_merah="no"), Fact(rasa_gatal="no"), Fact(luka_dari_bagian_mulut="yes"),
           Fact(rasa_nyeri="no"), Fact(kulit_melepuh="no"))
-    def disease_9(self):
+    def disease_5(self):
         self.declare(Fact(disease="Keloid"))
 
     @Rule(Fact(action='find_disease'), Fact(disease=MATCH.disease), salience=-998)
