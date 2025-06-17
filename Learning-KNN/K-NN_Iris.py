@@ -1,5 +1,3 @@
-# knn_iris.py
-
 import numpy as np
 import pandas as pd
 from sklearn import preprocessing, metrics
@@ -43,19 +41,15 @@ def main():
     X_train_norm, X_test_norm = preprocess(X_train, X_test)
     print("Train/Test split:", X_train.shape, X_test.shape)
 
-    # Coba nilai k default
     k = 4
     acc_train, acc_test, _ = evaluate_kknn(X_train_norm, y_train, X_test_norm, y_test, k)
     print(f"k = {k} -> Train Acc: {acc_train:.4f}, Test Acc: {acc_test:.4f}")
 
-    # Mencari k optimal
     best_k = search_best_k(X_train_norm, y_train, X_test_norm, y_test, max_k=50)
 
-    # Evaluasi lagi dengan k terbaik
     acc_train, acc_test, model = evaluate_kknn(X_train_norm, y_train, X_test_norm, y_test, best_k)
     print(f"Final eval with k={best_k}: Train Acc={acc_train:.4f}, Test Acc={acc_test:.4f}")
 
-    # Contoh prediksi baru
     sample = np.array([[5.9, 3.0, 5.1, 1.8]])
     sample_norm = preprocessing.StandardScaler().fit(X_train).transform(sample)
     print("Sample prediction:", model.predict(sample_norm))
